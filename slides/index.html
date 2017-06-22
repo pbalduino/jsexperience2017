@@ -318,6 +318,16 @@ for(var i = 0, len = list.length; i < len; i++) {
 
     <section class="slide">
       <h2>Don't use eval</h2>
+      <h3>The expression is evaluated twice</h3>
+      <pre>
+        <code>
+<span class='red'>// BAD</span>
+eval('process(' + value + ')');
+
+<span class='red'>// GOOD</span>
+process(value);
+        </code>
+      </pre>
     </section>
 
     <section class="slide">
