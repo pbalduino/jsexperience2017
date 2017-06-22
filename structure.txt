@@ -1,0 +1,9 @@
+Inside the browser
+
+UI Thread
+
+Move your animation from DOM+JS to CSS
+
+Loading your code
+
+Improving your code

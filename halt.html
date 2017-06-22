@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <title>Browser UI Thread Example</title>
+
+  <style>
+    body {
+      font-size: 100%;
+      text-align: center;
+    }
+
+    button {
+      font-size: 1.5em;
+      padding: 1em;
+      box-shadow: 0 9px #999;
+      margin-bottom: 1em;
+    }
+
+    button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #999;
+      transform: translateY(4px);
+    }
+
+    div {
+      font-size: 3em;
+    }
+  </style>
+
+</head>
+
+<body>
+  <button onclick="handleClick()">Click Me</button>
+  <script type="text/javascript">
+    function sleepFor(sleepDuration) {
+      var now = new Date().getTime();
+      while (new Date().getTime() < now + sleepDuration) { /* do nothing */ }
+    }
+
+    function handleClick() {
+      var div = document.createElement("div");
+      var r = Math.floor(Math.random() * 0x100);
+      var g = Math.floor(Math.random() * 0x100);
+      var b = Math.floor(Math.random() * 0x100);
+      div.innerHTML = "Clicked!";
+      div.style.color = 'rgb(' + r + ',' + g + ',' + b + ')';
+      document.body.appendChild(div);
+      // sleepFor(5000);
+    }
+  </script>
+</body>
+
+</html>

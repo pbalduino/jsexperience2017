@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Your deck.js Presentation</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/style/swiss.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="modernizr.custom.js"></script>
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+    <section class="slide">
+      <h2>High Performance JavaScript</h2>
+      <h3>Plínio Balduino</h3>
+      <h3>JS Experience 2017</h3>
+    </section>
+
+    <section class="slide">
+      <h2>Plínio Balduino</h2>
+      <img src="images/pbalduino.jpg" />
+    </section>
+
+    <section class="slide">
+      <h2>Browsers</h2>
+      <img src="images/airplane.jpg" />
+    </section>
+
+    <section class="slide">
+      <h2>Browsers</h2>
+      <img src="images/chrome.png" />
+    </section>
+
+    <section class="slide">
+      <h2>UI Thread</h2>
+      <h3>Your browser is (mostly) single threaded</h3>
+      <img src="images/palm.jpg" />
+    </section>
+
+    <section class="slide">
+      <h2>UI Thread</h2>
+      <img src="images/ui-thread.png" />
+    </section>
+
+    <section class="slide">
+      <h2>UI Thread</h2>
+      <h3>Your code affects the user experience</h3>
+      <img src="images/oh-noes.jpg" />
+    </section>
+
+    <section class="slide">
+      <h2>UI Thread</h2>
+      <h3>Move to Event Loop</h3>
+      <img src="images/step-aside.gif" />
+    </section>
+
+    <section class="slide">
+      <h2>UI Thread</h2>
+      <h3>Beware the events</h3>
+      <img src="images/beware.jpg" />
+    </section>
+
+    <section class="slide">
+      Move to CSS Animations - repaint/reflow  (show example)
+    </section>
+
+    <section class="slide">
+      use transform: where possible
+    </section>
+
+    <section class="slide">
+      Remove element, change, put it back, DocumentFragment
+      Group DOM changes in CSS classes
+      // This will incurr 5 screen refreshes
+$('#dialog-window').width(600).height(400).css('position': 'absolute')
+                       .css('top', '200px').css('left', '200px');
+// Let jQuery handle the batching
+$('#dialog-window').css({
+     width: '600px',
+     height: '400px',
+     position: 'absolute',
+     top: '200px',
+     left: '200px'
+);
+// Or even better use a CSS class.
+$('#dialog-window').addClass('mask-aligned-window');
+
+      Use ‘mouseup’ instead of ‘click’.
+      Web Workers
+    </section>
+
+    <section class="slide">
+      <h2>Loading the code</h2>
+      <img src="images/loading.jpg" />
+    </section>
+
+    <section class="slide">
+      Put the code at the bottom
+      Combine, minify and gzip
+      Dynamic loading
+      Defer loading
+        script defer - they download but don't execute
+      Async loading
+        script async - they download then execute
+    </section>
+
+    <section class="slide">
+      <h2>Is it awesone, isn't?</h2>
+      <img src="images/not-enough.jpg" />
+    </section>
+
+    <section class="slide">
+      <h2>Is your code fast?</h2>
+      <img src="images/barrichello.jpg" />
+    </section>
+
+    <section class="slide">
+      Scope
+      Cache
+      https://www.w3schools.com/js/js_performance.asp
+      https://www.slideshare.net/nzakas/writing-efficient-javascript/74-No_reflowReflow
+      Don't use eval
+      Avoid closures
+
+      Object creation
+      https://developers.google.com/speed/articles/optimizing-javascript
+      Avoid chaining (obj.prop.prop)
+      Reduce comparisons
+      https://www.slideshare.net/nzakas/writing-efficient-javascript/61-15x_53x_68x
+      Get elements by id
+      http://desalasworks.com/article/javascript-performance-techniques/
+    </section>
+
+    <section class="slide">
+      <h2>Reference</h2>
+      <h4>https://gist.github.com/pbalduino/8817d6182d7c4dee9edca99fff0aaafb</h4>
+    </section>
+
+    <section class="slide">
+      <h2>Questions?</h2>
+      <img src="images/questions.jpg" />
+    </section>
+
+    <section class="slide">
+      <h2>Thank you</h2>
+      <img src="images/thank-you.jpg" />
+    </section>
+
+
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="jquery.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
