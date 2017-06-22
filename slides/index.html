@@ -32,6 +32,10 @@
       font-weight: bold;
       line-height: 1.5em;
     }
+
+    span.red {
+      color: red;
+    }
   </style>
 
   <!-- Required Modernizr file -->
@@ -123,6 +127,7 @@ div.appendChild(obj3);
 
     <section class="slide">
       <h2>Use DocumentFragment</h2>
+      <h3>Reduces reflow</h3>
       <pre><code>
 var frag = document.createDocumentFragment();
 var div = document.getElementById('my-div');
@@ -183,13 +188,51 @@ $('#dialog-window')
     </section>
 
     <section class="slide">
-      Put the code at the bottom
-      Combine, minify and gzip
-      Dynamic loading
-      Defer loading
-        script defer - they download but don't execute
-      Async loading
-        script async - they download then execute
+      <h2>Loading the code</h2>
+      <h3>Always the UI Thread</h3>
+      <pre>
+        <code>
+&lt;body>
+  &lt;p>Some content&lt;/p>
+  <span class='red'>&lt;script src="foo.js">&lt;/script></span>
+  &lt;p>More content&lt;/p>
+&lt;/body>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Combine, minify and gzip</h2>
+      <img src="images/fusion.png" />
+    </section>
+
+    <section class="slide">
+      <h2>Put the code at the bottom</h2>
+      <h3>It loads after the UI update</h3>
+      <pre>
+        <code>
+&lt;body>
+  &lt;p>Some content&lt;/p>
+  &lt;p>More content&lt;/p>
+&lt;/body>
+<span class='red'>&lt;script src="foo.js">&lt;/script></span>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Dynamic loading</h2>
+      <h3>Good for older browsers</h3>
+    </section>
+
+    <section class="slide">
+      <h2>Defer loading</h2>
+      <h3>They download but don't execute</h3>
+    </section>
+
+    <section class="slide">
+      <h2>Async loading</h2>
+      <h3>They download then execute</h3>
     </section>
 
     <section class="slide">
@@ -203,19 +246,39 @@ $('#dialog-window')
     </section>
 
     <section class="slide">
-      Scope
-      Cache
+      <h2>Scope</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Cache</h2>
       https://www.w3schools.com/js/js_performance.asp
       https://www.slideshare.net/nzakas/writing-efficient-javascript/74-No_reflowReflow
-      Don't use eval
-      Avoid closures
+    </section>
 
-      Object creation
+    <section class="slide">
+      <h2>Don't use eval</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Avoid closures</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Object creation</h2>
       https://developers.google.com/speed/articles/optimizing-javascript
-      Avoid chaining (obj.prop.prop)
-      Reduce comparisons
+    </section>
+
+    <section class="slide">
+      <h2>Avoid chaining (obj.prop.prop)</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Reduce comparisons</h2>
       https://www.slideshare.net/nzakas/writing-efficient-javascript/61-15x_53x_68x
-      Get elements by id
+    </section>
+
+    <section class="slide">
+      <h2>Get elements by id</h2>
       http://desalasworks.com/article/javascript-performance-techniques/
     </section>
 
