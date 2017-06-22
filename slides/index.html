@@ -273,12 +273,47 @@ document.appendChild(script);
 
     <section class="slide">
       <h2>Scope</h2>
+      <h3>ALWAYS use the smaller scope</h3>
+      <pre>
+        <code>
+function potato() {
+  <span class='red'>var age = 42;</span>
+  // more code
+}
+        </code>
+      </pre>
     </section>
 
     <section class="slide">
       <h2>Cache</h2>
-      https://www.w3schools.com/js/js_performance.asp
-      https://www.slideshare.net/nzakas/writing-efficient-javascript/74-No_reflowReflow
+      <h3>Cache attributes and properties</h3>
+      <pre>
+        <code>
+<span class='red'>// BAD</span>
+var i;
+for(i = 0; i < list.length; i++) {
+
+<span class='red'>// GOOD</span>
+var i;
+var len = list.length;
+for(i = 0; i < len; i++) {
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Cache</h2>
+      <h3>Cache attributes and properties</h3>
+      <pre>
+        <code>
+<span class='red'>// BAD</span>
+var i;
+for(i = 0; i < list.length; i++) {
+
+<span class='red'>// GOOD</span>
+for(var i = 0, len = list.length; i < len; i++) {
+        </code>
+      </pre>
     </section>
 
     <section class="slide">
@@ -287,25 +322,155 @@ document.appendChild(script);
 
     <section class="slide">
       <h2>Avoid closures</h2>
+      <h3>Closures are cool, but expensive</h3>
+      <pre>
+        <code>
+var message = 'OH YEAH!';
+setTimeout(function() {
+  console.log(message);
+});
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Avoid closures</h2>
+      <h3>BETTER</h3>
+      <pre>
+        <code>
+setTimeout(function() {
+  var message = 'OH YEAH!';
+  console.log(message);
+});
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Avoid closures</h2>
+      <h3>EVEN BETTER</h3>
+      <pre>
+        <code>
+function showMessage() {
+  var message = 'OH YEAH!';
+  console.log(message);
+}
+
+setTimeout(showMessage);
+        </code>
+      </pre>
     </section>
 
     <section class="slide">
       <h2>Object creation</h2>
-      https://developers.google.com/speed/articles/optimizing-javascript
+      <h3>BAD</h3>
+      <pre>
+        <code>
+baz.Bar = function() {
+  // constructor body
+  this.foo = function() {
+    // method body
+  };
+}
+        </code>
+      </pre>
+    </section>
+
+
+    <section class="slide">
+      <h2>Object creation</h2>
+      <h3>BETTER</h3>
+      <pre>
+        <code>
+baz.Bar = function() {
+  // constructor body
+};
+
+baz.Bar.prototype.foo = function() {
+  // method body
+};
+        </code>
+      </pre>
     </section>
 
     <section class="slide">
-      <h2>Avoid chaining (obj.prop.prop)</h2>
+      <h2>Avoid method chaining</h2>
+      <h3>The lookup is expensive</h3>
+      <pre>
+        <code>
+<span class='red'>// BAD</span>
+object.property.whatever = 2;
+object.property.potato = 3;
+
+<span class='red'>// BETTER</span>
+var prop = object.property;
+
+prop.whatever = 2;
+prop.potato = 3;
+        </code>
+      </pre>
     </section>
 
     <section class="slide">
       <h2>Reduce comparisons</h2>
-      https://www.slideshare.net/nzakas/writing-efficient-javascript/61-15x_53x_68x
+      <h3>This one is tricky</h3>
+      <pre>
+        <code>
+var len = list.length;
+
+// for
+for(var i = 0; i < len; i++) {
+  process(list[i]);
+}
+
+// while
+var j = 0;
+do {
+  process(list[j]);
+} while (j < len);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Reduce comparisons</h2>
+      <h3>Compare only once</h3>
+      <pre>
+        <code>
+var len = list.length;
+
+// for
+<span class='red'>for(var i = len; i--;) {</span>
+  process(list[i - 1]);
+}
+
+// while
+<span class='red'>var j = len;</span>
+do {
+  process(list[j - 1]);
+<span class='red'>} while (j--);</span>
+        </code>
+      </pre>
     </section>
 
     <section class="slide">
       <h2>Get elements by id</h2>
-      http://desalasworks.com/article/javascript-performance-techniques/
+      <h3>Avoid slow lookups</h3>
+      <pre>
+        <code>
+var button = jQuery('body div.dialog > div.close-button:nth-child(2)')[0];
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Get elements by id</h2>
+      <h3>An id is supposed to be unique</h3>
+      <pre>
+        <code>
+var button = document.getElementById('dialog-close-button');
+        </code>
+      </pre>
     </section>
 
     <section class="slide">
