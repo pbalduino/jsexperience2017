@@ -223,16 +223,42 @@ $('#dialog-window')
     <section class="slide">
       <h2>Dynamic loading</h2>
       <h3>Good for older browsers</h3>
+      <pre>
+        <code>
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = 'foo.js';
+document.appendChild(script);
+        </code>
+      </pre>
     </section>
 
     <section class="slide">
       <h2>Defer loading</h2>
-      <h3>They download but don't execute</h3>
+      <h3>They download but don't execute immediately</h3>
+      <pre>
+        <code>
+&lt;body>
+  &lt;p>Some content&lt;/p>
+  <span class='red'>&lt;script defer src="foo.js">&lt;/script></span>
+  &lt;p>More content&lt;/p>
+&lt;/body>
+        </code>
+      </pre>
     </section>
 
     <section class="slide">
       <h2>Async loading</h2>
       <h3>They download then execute</h3>
+      <pre>
+        <code>
+&lt;body>
+  &lt;p>Some content&lt;/p>
+  <span class='red'>&lt;script async src="foo.js">&lt;/script></span>
+  &lt;p>More content&lt;/p>
+&lt;/body>
+        </code>
+      </pre>
     </section>
 
     <section class="slide">
